@@ -57,7 +57,13 @@ function MovieDetail(props) {
             <div style={{ width: '85%', margin: '1rem auto'}}>
 
                 <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
-                    <Favorite />
+                    <Favorite
+                        movieInfo={Movie}
+                        movieId={movieId}
+                        // 로그인 시 localStorage 에 userId 넣어둠.
+                        userFrom={localStorage.getItem('userId')}
+                        
+                    />
                 </div>
                 
 

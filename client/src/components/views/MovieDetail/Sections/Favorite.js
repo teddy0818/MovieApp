@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function Favorite() {
+function Favorite(props) {
+
+    const userFrom = props.userFrom
+    const movieId = props.movieId
+
+    useEffect(() => {
+
+        let variables = {
+            userFrom,
+            movieId
+        }
+
+        Axios.post('/api/favorite/favoriteNumber', variables)
+            .then(response => {
+                if(response.data.success) {
+
+                } else {
+                    alert('숫자 정보를 못가져왔습니다!!')
+                }
+            })
+
+      
+    }, [])
+
     return (
         <div>
             <button>Favorite</button>
