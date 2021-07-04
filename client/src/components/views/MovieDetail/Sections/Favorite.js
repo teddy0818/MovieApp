@@ -20,11 +20,21 @@ function Favorite(props) {
 
         Axios.post('/api/favorite/favoriteNumber', variables)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 if(response.data.success) {
                     
                 } else {
                     alert('숫자 정보를 못가져왔습니다!!')
+                }
+            })
+
+        Axios.post('/api/favorite/favorited', variables)
+            .then(response => {
+                console.log(response.data)
+                if(response.data.success) {
+                    
+                } else {
+                    alert('정보를 가져오는데 실패했습니다')
                 }
             })
 
