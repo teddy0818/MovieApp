@@ -13,7 +13,7 @@ router.post("/favoriteNumber", (req, res) => {
         .exec((err, info) => {
             if(err) return res.status(400).send(err)
             // Front에 다시 숫자 정보 전달하기
-            res.status(200).json({ success: true, favortieNumber: info.length })
+            res.status(200).json({ success: true, favoriteNumber: info.length })
         })
 
 
@@ -29,7 +29,7 @@ router.post("/favorited", (req, res) => {
             let result = false
             if(info.length !== 0) result = true
 
-            res.status(200).json({ success: true, favortied: result })
+            res.status(200).json({ success: true, favorited: result })
         })
 
 
