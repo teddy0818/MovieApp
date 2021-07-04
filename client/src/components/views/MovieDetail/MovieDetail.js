@@ -44,7 +44,7 @@ function MovieDetail(props) {
         
 
     return (
-        <div>
+        <div style={{ width: '100%', margin: '0' }}>
             
             {/* Header */}
             <MainImage image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
@@ -67,7 +67,7 @@ function MovieDetail(props) {
                     <button onClick={toggleActorView}> Toggle Actor View</button>
                 </div>
 
-                // {/* Actors Grid */}
+                {/* Actors Grid */}
                 {ActorToggle &&
                     <Row gutter={[16, 16]} >
                         {Casts && Casts.map((cast, index) => (
