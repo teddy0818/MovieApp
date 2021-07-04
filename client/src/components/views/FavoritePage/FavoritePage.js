@@ -1,6 +1,8 @@
 import React,{useEffect, useState} from 'react'
 import Axios from 'axios'
 import './favorite.css'
+import { Popover } from 'antd'
+import { API_URL, API_KEY, IMAGE_BASE_URL} from "../../Config";
 
 function FavoritePage() {
 
@@ -20,6 +22,25 @@ function FavoritePage() {
 
     }, [])  
 
+    const renderCards = Favorties.map((favorite, index) => {
+
+        const content = (
+            <div>
+                {favorite.moviePost ?
+                    <img src={`${IMAGE_BASE_URL}w500${favorite.moviePost}`} /> : 'no image'
+            }
+            </div>
+        )
+
+        return <tr key={index}>
+            <Popover content={content} title={`${favorite.movieTitle}`}>
+                <td>{favorite.movieTitle}</td>
+            </Popover>
+            <td>{favorite.movieRunTime}</td>
+            <button>Remove</button>
+        </tr>
+    })
+
     return (
         <div style= {{ width: '85%', margin: '3rem auto'}}>
             <h2>FavoritePage</h2> 
@@ -34,13 +55,9 @@ function FavoritePage() {
                     </tr>
                 </thead>
                 <tbody>
-                    { Favorties.map((favorite, index) => (
-                        <tr key={index}>
-                            <td>{favorite.movieTitle}</td>
-                            <td>{favorite.movieRunTime}</td>
-                            <button>Remove</button>
-                        </tr>
-                    ))}
+
+                    {renderCards}
+
                 </tbody>
             </table>
         </div>
