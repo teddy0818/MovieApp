@@ -8,11 +8,12 @@ function Comment(props) {
     const user = useSelector(state => state.user) // 리덕스 안에 있는 state 에서 정보가져옴
     // props 이용해서 가져오기. 
     const movieId = props.movieId
+    const commentList = props.commentList
 
-    const [commentValue, setcommentValue] = useState("")
+    const [commentValue, setCommentValue] = useState("")
 
     const handleClick = (event) => {
-        setcommentValue(event.currentTarget.value)
+        setCommentValue(event.currentTarget.value)
     }
 
     const onSubmit = (event) => {
@@ -28,12 +29,12 @@ function Comment(props) {
         .then(response => {
             console.log(response.data)
             if(response.data.success) {
-                
+                props.refreshFunction(response.data.result)
+                setCommentValue('')
             } else {
                 alert('댓글 쓰기 실패')
             }
         })
-
     }
 
 
@@ -45,7 +46,17 @@ function Comment(props) {
 
 
             {/* Comment Lists */}
-            <SingleComment />
+            {commentList &&
+                    commentList.map((comment, index) => (
+                        (!comment.responseTo && 
+                            <SingleComment
+                                movieId={movieId}
+                                comment={comment}
+                                refreshFunction={props.refreshFunction}
+                            />
+                        )
+                    ))
+            }
 
             {/* Roote Comment form */}
             <form style={{ display: 'flex' }} onSubmit={onSubmit}>
