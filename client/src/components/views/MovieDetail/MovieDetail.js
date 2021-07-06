@@ -97,7 +97,9 @@ function MovieDetail(props) {
                     </Row>
                 }
             {/* Comment */}
-            <Comment />
+            <Comment 
+                movieId={movieId}
+            />
             </div>
 
 

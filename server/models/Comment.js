@@ -7,19 +7,18 @@ const commentSchema = mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
    },
-   postId : {
-    type: Schema.Types.ObjectId,
-    ref: 'Movie'
+   movieId : {
+    type: String
    },
    responseTo : {
     type: Schema.Types.ObjectId,
     ref: 'User'
    },
    content : {
-    Type: String
+    type: String
    }
-});
+}, {timestamps : true});
 
-const Comment = mongoose.model('Comment', favoriteSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 
 module.exports = { Comment }
