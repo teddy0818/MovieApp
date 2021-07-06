@@ -56,7 +56,12 @@ function Comment(props) {
                                     comment={comment}
                                     refreshFunction={props.refreshFunction}
                                 />
-                                <ReplyComment/>
+                                <ReplyComment
+                                    movieId={movieId}
+                                    commentList={commentList}
+                                    parentCommentId={comment._id}
+                                    refreshFunction={props.refreshFunction}
+                                />
                             </React.Fragment>
                         )
                     ))

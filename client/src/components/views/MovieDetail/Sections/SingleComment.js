@@ -35,6 +35,7 @@ function SingleComment(props) {
             if(response.data.success) {
                 props.refreshFunction(response.data.result)
                 setCommentValue('')
+                setOpenReply(false)
             } else {
                 alert('댓글 쓰기 실패')
             }
@@ -54,7 +55,7 @@ function SingleComment(props) {
                 actions={actions}
                 author={comment.writer.name}
                 avatar={<Avatar src/>}
-                content={<p>comment.content</p>}
+                content={props.comment.content}
             />
 
 
