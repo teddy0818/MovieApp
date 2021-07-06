@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useSelector } from 'react-redux' // 리덕스에서 회원정보를 가져옴
 import Axios from 'axios'
+import SingleComment from './SingleComment'
 
 function Comment(props) {
     //방법 1.localStorage에서 가져오기 2.리덕스에 있는 state에서 가져오기
@@ -44,7 +45,7 @@ function Comment(props) {
 
 
             {/* Comment Lists */}
-
+            <SingleComment />
 
             {/* Roote Comment form */}
             <form style={{ display: 'flex' }} onSubmit={onSubmit}>
