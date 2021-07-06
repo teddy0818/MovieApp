@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useSelector } from 'react-redux' // 리덕스에서 회원정보를 가져옴
 import Axios from 'axios'
 import SingleComment from './SingleComment'
+import ReplyComment from './ReplyComment'
 
 function Comment(props) {
     //방법 1.localStorage에서 가져오기 2.리덕스에 있는 state에서 가져오기
@@ -49,11 +50,14 @@ function Comment(props) {
             {commentList &&
                     commentList.map((comment, index) => (
                         (!comment.responseTo && 
-                            <SingleComment
-                                movieId={movieId}
-                                comment={comment}
-                                refreshFunction={props.refreshFunction}
-                            />
+                            <React.Fragment> 
+                                <SingleComment
+                                    movieId={movieId}
+                                    comment={comment}
+                                    refreshFunction={props.refreshFunction}
+                                />
+                                <ReplyComment/>
+                            </React.Fragment>
                         )
                     ))
             }
