@@ -5,6 +5,8 @@ import MovieInfo from './Sections/MovieInfo';
 import GridCards from '../commons/GridCards';
 import { Row } from "antd";
 import Favorite from './Sections/Favorite';
+import Comment from './Sections/Comment';
+
 
 function MovieDetail(props) {
 
@@ -14,6 +16,7 @@ function MovieDetail(props) {
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
     const [ActorToggle, setActorToggle] = useState(false)
+    const [Comments, setComments] = useState('')
 
     useEffect(() => {
 
@@ -93,7 +96,11 @@ function MovieDetail(props) {
                         ))}
                     </Row>
                 }
+            {/* Comment */}
+            <Comment />
             </div>
+
+
         </div>
     )
 }
