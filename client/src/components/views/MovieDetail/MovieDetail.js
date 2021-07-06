@@ -7,6 +7,7 @@ import { Row } from "antd";
 import Favorite from './Sections/Favorite';
 import Comment from './Sections/Comment';
 import Axios from 'axios';
+import LikeDisLikes from './Sections/LikeDisLikes'
 
 
 function MovieDetail(props) {
@@ -74,7 +75,8 @@ function MovieDetail(props) {
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto'}}>
 
-                <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
+
                     <Favorite
                         movieInfo={Movie}
                         movieId={movieId}
@@ -82,6 +84,7 @@ function MovieDetail(props) {
                         userFrom={localStorage.getItem('userId')}
                         
                     />
+
                 </div>
                 
 
@@ -91,6 +94,11 @@ function MovieDetail(props) {
                 />
 
                 <br />
+
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center'}}>
+                    {/* Like & DisLike */}
+                    <LikeDisLikes />
+                </div>
                 
                 <div style={{ display: 'flex', justifyContent: "center", margin: "2rem" }}>
                     <button onClick={toggleActorView}> Toggle Actor View</button>
@@ -111,6 +119,7 @@ function MovieDetail(props) {
                         ))}
                     </Row>
                 }
+
             {/* Comment */}
             <Comment 
                 movieId={movieId}
