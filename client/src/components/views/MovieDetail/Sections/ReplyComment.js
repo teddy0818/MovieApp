@@ -40,7 +40,6 @@ function ReplyComment(props) {
     )
 
     const onHandleChange = () => {
-        console.log('클릭')
         setOpenReplyComments(!OpenReplyComments)
     }
 
