@@ -18,6 +18,7 @@ function ReplyComment(props) {
     }, [commentList]) // commentList가 바뀔때마다 이부분을 다시한번 실행하라!
 
     const renderReplyComment = (parentCommentId) => (
+        //  소괄호 말고 중괄호 쓰면 안됨. 중괄호는 리턴값이 있어야함
         commentList.map((comment, index) => (
             <React.Fragment> 
                 {comment.responseTo == parentCommentId &&

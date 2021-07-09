@@ -97,7 +97,9 @@ function MovieDetail(props) {
 
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'center'}}>
                     {/* Like & DisLike */}
-                    <LikeDisLikes />
+                    <LikeDisLikes 
+                        movieId={movieId}
+                    />
                 </div>
                 
                 <div style={{ display: 'flex', justifyContent: "center", margin: "2rem" }}>

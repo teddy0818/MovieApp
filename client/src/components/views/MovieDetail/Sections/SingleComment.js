@@ -47,8 +47,6 @@ function SingleComment(props) {
         <span onClick={toggleReply} key="comment-basic-reply-to">Reply to</span>
     ]
 
-    
-
     return (
         <div>
             <Comment 
