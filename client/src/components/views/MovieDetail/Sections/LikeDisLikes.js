@@ -87,7 +87,7 @@ function LikeDisLikes(props) {
 
     const onClickLike = () => {
         if(IsLike) {
-            //좋아요 비활성화
+            //좋아요 활성화 일때
             Axios.post('/api/like/removeLike', {movieId, userId})
             .then(response => {
                 // console.log('saveLike : ' + response.data)
@@ -99,7 +99,7 @@ function LikeDisLikes(props) {
                 }
             })
         } else {
-            //좋아요 활성화
+            //좋아요 비활성화 일때
             Axios.post('/api/like/saveLike', {movieId, userId})
             .then(response => {
                 // console.log('saveLike : ' + response.data)
@@ -110,12 +110,25 @@ function LikeDisLikes(props) {
                     alert('좋아요 활성화 실패')
                 }
             })
+            // 싫어요 활성화일 때 비활성화 시키기
+            if(IsDislike) {
+                Axios.post('/api/dislike/removeDislike', {movieId, userId})
+                .then(response => {
+                    // console.log('saveLike : ' + response.data)
+                    if(response.data.success) {
+                        getdisLikeNum()
+                        getIsDislike()
+                    } else {
+                        alert('싫어요 비활성화 실패')
+                    }
+                })
+            } 
         }
     }
 
     const onClickdisLike = () => {
         if(IsDislike) {
-            //싫어요 비활성화
+            //싫어요 활성화 일때
             Axios.post('/api/dislike/removeDislike', {movieId, userId})
             .then(response => {
                 // console.log('saveLike : ' + response.data)
@@ -127,7 +140,7 @@ function LikeDisLikes(props) {
                 }
             })
         } else {
-            //싫어요 활성화
+            //싫어요 비활성화 일때
             Axios.post('/api/dislike/saveDislike', {movieId, userId})
             .then(response => {
                 // console.log('saveLike : ' + response.data)
@@ -138,6 +151,19 @@ function LikeDisLikes(props) {
                     alert('싫어요 활성화 실패')
                 }
             })
+            // 좋아요 활성화일 때 비활성화 시키기
+            if(IsLike) {
+                Axios.post('/api/like/removeLike', {movieId, userId})
+                .then(response => {
+                    // console.log('saveLike : ' + response.data)
+                    if(response.data.success) {
+                        getLikeNum()
+                        getIsLike()
+                    } else {
+                        alert('좋아요 비활성화 실패')
+                    }
+                })
+            } 
         }
     }
 
