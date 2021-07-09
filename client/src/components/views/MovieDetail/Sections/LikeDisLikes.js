@@ -8,16 +8,23 @@ function LikeDisLikes(props) {
     
     const movieId = props.movieId
     const userId = localStorage.getItem('userId')
-    
-    let variables = {
+    const commentId = props.commentId
+    let variables;
 
-    }
-
-    if(props.commentId) {
+    if(commentId) {
         //댓글 좋아요
-
+        variables = {
+            movieId,
+            userId,
+            commentId
+        }
+        
     } else {
         //영화 좋아요
+        variables = {
+            movieId,
+            userId
+        }
 
     }
 
@@ -28,7 +35,7 @@ function LikeDisLikes(props) {
     
     const getLikeNum = () => {
         //좋아요 수 가져오기
-        Axios.post('/api/like/getLikeNum', {movieId})
+        Axios.post('/api/like/getLikeNum', variables)
         .then(response => {
             // console.log('likenum : ' + response.data.likesNum)
             if(response.data.success) {
@@ -41,7 +48,7 @@ function LikeDisLikes(props) {
 
     const getdisLikeNum = () => {
         //싫어요 수 가져오기
-        Axios.post('/api/dislike/getDisLikeNum', {movieId})
+        Axios.post('/api/dislike/getDisLikeNum', variables)
         .then(response => {
             // console.log('disLikenum : ' + response.data.dislikesNum)
             if(response.data.success) {
