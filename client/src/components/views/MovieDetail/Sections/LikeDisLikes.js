@@ -23,6 +23,8 @@ function LikeDisLikes(props) {
 
     const [LikeNum, setLikeNum] = useState(0)
     const [IsLike, setIsLike] = useState()
+    const [DislikeNum, setDislikeNum] = useState(0)
+    const [IsDislike, setIsDislike] = useState()
     
     const getLikeNum = () => {
         //좋아요 수 가져오기
@@ -33,6 +35,19 @@ function LikeDisLikes(props) {
                 setLikeNum(response.data.likesNum)
             } else {
                 alert('좋아요 수 가져오기 실패')
+            }
+        })
+    }
+
+    const getdisLikeNum = () => {
+        //싫어요 수 가져오기
+        Axios.post('/api/dislike/getDisLikeNum', {movieId})
+        .then(response => {
+            // console.log('disLikenum : ' + response.data.dislikesNum)
+            if(response.data.success) {
+                setDislikeNum(response.data.dislikesNum)
+            } else {
+                alert('싫어요 수 가져오기 실패')
             }
         })
     }
@@ -50,9 +65,24 @@ function LikeDisLikes(props) {
         })
     }
 
+    const getIsDislike = () => {
+        //내가 한 싫어요 가져오기 
+        Axios.post('/api/dislike/getMeDislike', {movieId, userId})
+        .then(response => {
+            // console.log('likenum : ' + response.data.likesNum)
+            if(response.data.success) {
+                response.data.dislikesNum > 0 ? setIsDislike(true) :  setIsDislike(false)
+            } else {
+                alert('내가한 싫어요 여부 가져오기 실패')
+            }
+        })
+    }
+
     useEffect(() => {
         getLikeNum()
         getIsLike()
+        getdisLikeNum()
+        getIsDislike()
     }, [])
 
     const onClickLike = () => {
@@ -83,6 +113,34 @@ function LikeDisLikes(props) {
         }
     }
 
+    const onClickdisLike = () => {
+        if(IsDislike) {
+            //싫어요 비활성화
+            Axios.post('/api/dislike/removeDislike', {movieId, userId})
+            .then(response => {
+                // console.log('saveLike : ' + response.data)
+                if(response.data.success) {
+                    getdisLikeNum()
+                    getIsDislike()
+                } else {
+                    alert('싫어요 비활성화 실패')
+                }
+            })
+        } else {
+            //싫어요 활성화
+            Axios.post('/api/dislike/saveDislike', {movieId, userId})
+            .then(response => {
+                // console.log('saveLike : ' + response.data)
+                if(response.data.success) {
+                    getdisLikeNum()
+                    getIsDislike()
+                } else {
+                    alert('싫어요 활성화 실패')
+                }
+            })
+        }
+    }
+
 
     return (
         <div>
@@ -100,12 +158,12 @@ function LikeDisLikes(props) {
             <span key="comment-basic-dislike">
                 <Tooltip title="Dislike">
                     <Icon type="dislike"
-                          theme="outlined"
-                           onClick=""
+                          theme={`${IsDislike ? 'filled' : 'outlined'}`}
+                           onClick={onClickdisLike}
                     />
 
                 </Tooltip>
-                <span style={{ paddingLeft:'0px', cursor:'auto' }}>  </span>
+                <span style={{ paddingLeft:'0px', cursor:'auto' }}> {DislikeNum} </span>
             </span>
         </div>
     )
