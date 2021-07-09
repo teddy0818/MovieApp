@@ -56,17 +56,31 @@ function LikeDisLikes(props) {
     }, [])
 
     const onClickLike = () => {
-        //좋아요 활성화
-        Axios.post('/api/like/saveLike', {movieId, userId})
-        .then(response => {
-            console.log('saveLike : ' + response.data)
-            if(response.data.success) {
-                getLikeNum()
-                getIsLike()
-            } else {
-                alert('좋아요 활성화 실패')
-            }
-        })
+        if(IsLike) {
+            //좋아요 비활성화
+            Axios.post('/api/like/removeLike', {movieId, userId})
+            .then(response => {
+                // console.log('saveLike : ' + response.data)
+                if(response.data.success) {
+                    getLikeNum()
+                    getIsLike()
+                } else {
+                    alert('좋아요 비활성화 실패')
+                }
+            })
+        } else {
+            //좋아요 활성화
+            Axios.post('/api/like/saveLike', {movieId, userId})
+            .then(response => {
+                // console.log('saveLike : ' + response.data)
+                if(response.data.success) {
+                    getLikeNum()
+                    getIsLike()
+                } else {
+                    alert('좋아요 활성화 실패')
+                }
+            })
+        }
     }
 
 

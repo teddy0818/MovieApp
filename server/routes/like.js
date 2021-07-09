@@ -38,4 +38,12 @@ router.post("/saveLike", (req, res) => {
     })
 });
 
+router.post("/removeLike", (req, res) => {
+    Like.findOneAndDelete({ 'movieId': req.body.movieId, 'userId': req.body.userId})
+    .exec((err, doc) => {
+        if(err) return res.status(400).send(err)
+        return res.status(200).json({ success: true })
+    })
+});
+
 module.exports = router;
