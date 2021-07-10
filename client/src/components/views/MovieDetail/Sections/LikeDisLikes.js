@@ -14,9 +14,8 @@ function LikeDisLikes(props) {
     if(commentId) {
         //댓글 좋아요
         variables = {
-            movieId,
-            userId,
-            commentId
+            commentId,
+            userId
         }
         
     } else {
@@ -61,7 +60,7 @@ function LikeDisLikes(props) {
     
     const getIsLike = () => {
         //내가 한 좋아요 가져오기 
-        Axios.post('/api/like/getMeLike', {movieId, userId})
+        Axios.post('/api/like/getMeLike', variables)
         .then(response => {
             // console.log('likenum : ' + response.data.likesNum)
             if(response.data.success) {
@@ -74,7 +73,7 @@ function LikeDisLikes(props) {
 
     const getIsDislike = () => {
         //내가 한 싫어요 가져오기 
-        Axios.post('/api/dislike/getMeDislike', {movieId, userId})
+        Axios.post('/api/dislike/getMeDislike', variables)
         .then(response => {
             // console.log('likenum : ' + response.data.likesNum)
             if(response.data.success) {
@@ -95,7 +94,7 @@ function LikeDisLikes(props) {
     const onClickLike = () => {
         if(IsLike) {
             //좋아요 활성화 일때
-            Axios.post('/api/like/removeLike', {movieId, userId})
+            Axios.post('/api/like/removeLike', variables)
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
@@ -107,7 +106,7 @@ function LikeDisLikes(props) {
             })
         } else {
             //좋아요 비활성화 일때
-            Axios.post('/api/like/saveLike', {movieId, userId})
+            Axios.post('/api/like/saveLike', variables)
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
@@ -119,7 +118,7 @@ function LikeDisLikes(props) {
             })
             // 싫어요 활성화일 때 비활성화 시키기
             if(IsDislike) {
-                Axios.post('/api/dislike/removeDislike', {movieId, userId})
+                Axios.post('/api/dislike/removeDislike', variables)
                 .then(response => {
                     // console.log('saveLike : ' + response.data)
                     if(response.data.success) {
@@ -136,7 +135,7 @@ function LikeDisLikes(props) {
     const onClickdisLike = () => {
         if(IsDislike) {
             //싫어요 활성화 일때
-            Axios.post('/api/dislike/removeDislike', {movieId, userId})
+            Axios.post('/api/dislike/removeDislike', variables)
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
@@ -148,7 +147,7 @@ function LikeDisLikes(props) {
             })
         } else {
             //싫어요 비활성화 일때
-            Axios.post('/api/dislike/saveDislike', {movieId, userId})
+            Axios.post('/api/dislike/saveDislike', variables)
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
@@ -160,7 +159,7 @@ function LikeDisLikes(props) {
             })
             // 좋아요 활성화일 때 비활성화 시키기
             if(IsLike) {
-                Axios.post('/api/like/removeLike', {movieId, userId})
+                Axios.post('/api/like/removeLike', variables)
                 .then(response => {
                     // console.log('saveLike : ' + response.data)
                     if(response.data.success) {

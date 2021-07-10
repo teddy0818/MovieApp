@@ -8,7 +8,22 @@ const { Like } = require("../models/Like");
 //=================================
 
 router.post("/getLikeNum", (req, res) => {
-    Like.find({ 'movieId' : req.body.movieId})
+
+    let variable = {}
+
+    if(req.body.movieId) {
+        variable = {
+            movieId : req.body.movieId,
+            userId : req.body.userId
+        }
+    } else {
+        variable = {
+            commentId : req.body.commentId,
+            userId : req.body.userId
+        }
+    }
+
+    Like.find(variable)
         .exec((err, Likes) => {
             if(err) return res.status(400).send(err)
             res.status(200).json({ 
@@ -16,10 +31,25 @@ router.post("/getLikeNum", (req, res) => {
                 likesNum: Likes.length 
             })
     })
+
 });
 
 router.post("/getMeLike", (req, res) => {
-    Like.find({ 'movieId' : req.body.movieId, 'userId': req.body.userId})
+    let variable = {}
+
+    if(req.body.movieId) {
+        variable = {
+            movieId : req.body.movieId,
+            userId : req.body.userId
+        }
+    } else {
+        variable = {
+            commentId : req.body.commentId,
+            userId : req.body.userId
+        }
+    }
+
+    Like.find(variable)
         .populate('userId') 
         .exec((err, Likes) => {
             if(err) return res.status(400).send(err)
@@ -31,7 +61,21 @@ router.post("/getMeLike", (req, res) => {
 });
 
 router.post("/saveLike", (req, res) => {
-    const like = new Like(req.body)
+    let variable = {}
+
+    if(req.body.movieId) {
+        variable = {
+            movieId : req.body.movieId,
+            userId : req.body.userId
+        }
+    } else {
+        variable = {
+            commentId : req.body.commentId,
+            userId : req.body.userId
+        }
+    }
+
+    const like = new Like(variable)
     like.save((err, doc) => {
         if(err) return res.status(400).send(err)
         return res.status(200).json({ success: true })
@@ -39,7 +83,21 @@ router.post("/saveLike", (req, res) => {
 });
 
 router.post("/removeLike", (req, res) => {
-    Like.findOneAndDelete({ 'movieId': req.body.movieId, 'userId': req.body.userId})
+    let variable = {}
+
+    if(req.body.movieId) {
+        variable = {
+            movieId : req.body.movieId,
+            userId : req.body.userId
+        }
+    } else {
+        variable = {
+            commentId : req.body.commentId,
+            userId : req.body.userId
+        }
+    }
+
+    Like.findOneAndDelete(variable)
     .exec((err, doc) => {
         if(err) return res.status(400).send(err)
         return res.status(200).json({ success: true })

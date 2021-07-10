@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Comment, Avatar, Button, Input } from 'antd'
 import { useSelector } from 'react-redux'
 import Axios from 'axios'
+import LikeDisLikes from './LikeDisLikes'
 const TextArea = Input.TextArea;
 
 function SingleComment(props) {
@@ -43,19 +44,25 @@ function SingleComment(props) {
 
     }
 
+    // 배열형식으로 넣음
     const actions = [
-        <span onClick={toggleReply} key="comment-basic-reply-to">Reply to</span>
+        <LikeDisLikes
+            movieId={movieId}
+            userId={user}
+            commentId={comment}
+        />,
+        <span style={{marginLeft : "5px"}} onClick={toggleReply} key="comment-basic-reply-to">Reply to</span>
     ]
 
     return (
         <div>
             <Comment 
                 actions={actions}
-                author={comment.writer.name}
+                author={props.comment.writer.name}
                 avatar={<Avatar src/>}
                 content={props.comment.content}
             />
-
+        
 
             {/* Roote Comment form */}
             {OpenReply &&
