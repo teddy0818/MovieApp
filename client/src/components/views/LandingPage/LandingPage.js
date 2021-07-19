@@ -12,13 +12,13 @@ function LandingPage() {
     const [CurrntPage, setCurrntPage] = useState(0)
 
     useEffect(() => {
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=1`;
         fetchMovies(endpoint)
 
     }, [])
 
     const loadMoreItems = () => {
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrntPage + 1}`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=${CurrntPage + 1}`;
         fetchMovies(endpoint)
     }
 
@@ -41,7 +41,7 @@ function LandingPage() {
       <div style={{ width: '100%', margin: '0' }}>
 
           {/* { Main Image } */}
-          {/* MainMovieImage 가 있으면 M ainImage component를 가져와라 */}
+          {/* MainMovieImage 가 있으면 MainImage component를 가져와라 */}
         
           {MainMovieImage &&
             <MainImage image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}
@@ -65,7 +65,7 @@ function LandingPage() {
                                 image={movie.poster_path ?
                                     `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                                 movieId={movie.id}
-                                movieName={movie.original_title}
+                                movieName={movie.title}
                             />
                         </React.Fragment>
                     ))}

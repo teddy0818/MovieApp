@@ -26,7 +26,8 @@ function MovieDetail(props) {
 
         const endpointCrew = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
         
-        const endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
+        // const endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
+        const endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=ko-KR`;
 
         fetch(endpointInfo)
             .then(response => response.json())
@@ -67,6 +68,7 @@ function MovieDetail(props) {
         <div style={{ width: '100%', margin: '0' }}>
             
             {/* Header */}
+
             <MainImage image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
             title={Movie.original_title}
             description={Movie.overview}
