@@ -74,6 +74,8 @@ function MovieDetail(props) {
             }
         })
 
+
+
     }, [])
 
     const toggleActorView = () => {
@@ -87,6 +89,25 @@ function MovieDetail(props) {
     const updStarRate = (value) => {
         setStarRate(value)
         console.log(value)
+        if(!value) {
+        // 준 별점이 있다면 - 별점 수정
+        // 수정한 별점이 0이라면 - 별점 제거
+        } else {
+        //별점이 없다면 - 별점 넣기
+            Axios.post('/api/starrate/addToStarRate', {
+                rate:value,
+                movieId,
+                userFrom:localStorage.getItem('userId')}
+                )
+            .then(response => {
+                // console.log(response.data)
+                if(response.data.success) {
+                    setStarRate(value)
+                } else {
+                    alert('별점 주기 실패')
+                }
+            })
+        }
       };
 
     return (
