@@ -12,10 +12,10 @@ function MainImage(props) {
         url('${props.image}'), #1c1c1c`,
             height: '80vh',
             backgroundSize: '100%, cover',
-            backgroundPosition: 'center, center',
+            backgroundPosition: 'center, top',
             width: '100%',
             position: 'relative',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
         }}>
         <div>
         <div style={{ position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem' }}>
