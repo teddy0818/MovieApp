@@ -15,12 +15,15 @@ function MovieDetail(props) {
 
     // App.js 에서 설정해서 값을 가져올 수 있는거임
     let movieId = props.match.params.movieId;
+    let genreString = "";
 
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
     const [ActorToggle, setActorToggle] = useState(false)
     const [Comments, setComments] = useState([])
     const [MainIMG, setMainIMG] = useState(null)
+    const [GenreString, setGenreString] = useState("")
+
 
     useEffect(() => {
 
@@ -32,7 +35,6 @@ function MovieDetail(props) {
         fetch(endpointInfo)
             .then(response => response.json())
             .then(response => {
-                // console.log(response)
                 setMovie(response) 
                 setMainIMG(
                     {
@@ -40,8 +42,15 @@ function MovieDetail(props) {
                         title: response.title,
                         overview : response.overview
                     }
-                ) 
-                console.log(response)
+                )
+                for(let i=0; i<response.genres.length; i++) {
+                    if(i == response.genres.length-1) {
+                        genreString += response.genres[i].name 
+                    } else {
+                        genreString += response.genres[i].name + ', '
+                    }
+                }
+                setGenreString(genreString)
             })
 
         fetch(endpointCrew)
@@ -101,6 +110,7 @@ function MovieDetail(props) {
 
                 {/* Movie info */}
                 <MovieInfo 
+                    genre={GenreString}
                     movie={Movie}
                 />
 
