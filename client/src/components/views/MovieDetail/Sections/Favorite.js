@@ -77,8 +77,10 @@ function Favorite(props) {
 
     return (
         <div>
-            {/* <Button onClick={onClickFavorite}>{Favorited ? '{<img src="#">}' : '즐겨찾기 추가'} {FavoriteNumber}</Button> */}
-            <Button style={{display: 'flex', justifyContent:'center', alignItems:'center'}} onClick={onClickFavorite}>{Favorited ?  <img src={star_img} style={{ width:"20px", height:"20px", marginRight:"5px"}} /> : <img src={unStar_img} style={{ width:"20px", height:"20px", marginRight:"5px"}} />} {FavoriteNumber}</Button>
+            <Button style={{display: 'flex', justifyContent:'center', alignItems:'center'}} onClick={onClickFavorite}>     {Favorited ?  <img src={star_img} style={{ width:"20px", height:"20px", marginRight:"5px"}} /> : 
+            <img src={unStar_img} style={{ width:"20px", height:"20px", marginRight:"5px"}} />}
+            {FavoriteNumber}
+            </Button>
         </div>
     )
 }
