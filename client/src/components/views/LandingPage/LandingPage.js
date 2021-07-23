@@ -3,7 +3,7 @@ import { FaCode } from "react-icons/fa";
 import { API_URL, API_KEY, IMAGE_BASE_URL} from "../../Config";
 import MainImage from "../LandingPage/Sections/MainImage";
 import GridCards from "../commons/GridCards";
-import { Row } from "antd";
+import { Row, Button } from "antd";
 
 function LandingPage() {
 
@@ -19,6 +19,7 @@ function LandingPage() {
 
     const loadMoreItems = () => {
         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=${CurrntPage + 1}`;
+        setMainMovieImage(null)
         fetchMovies(endpoint)
     }
 
@@ -51,7 +52,7 @@ function LandingPage() {
           }
 
           <div style={{ width:"85%", margin: '1rem auto' }}>
-              <h3>Movies by lastest </h3>
+              <h1>최신 인기 영화</h1>
               <hr />
               {/* { Movie Grid Cards } */}
               
@@ -74,7 +75,7 @@ function LandingPage() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center'}}>
-              <button onClick={loadMoreItems}>Load More</button>
+              <Button type="primary" onClick={loadMoreItems} style={{width: '100px', height: '50px', marginTop: '40px'}}>더보기</Button>
           </div>
           
       </div>
