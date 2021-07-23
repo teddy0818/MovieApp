@@ -16,7 +16,7 @@ function MovieDetail(props) {
     // App.js 에서 설정해서 값을 가져올 수 있는거임
     let movieId = props.match.params.movieId;
     let genreString = "";
-    let tempRevenue = "";
+    const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!'];
 
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
@@ -106,6 +106,7 @@ function MovieDetail(props) {
                 <span>별점주기</span>
                 <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                     <Rate allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
+                    {StarRate ? <span className="ant-rate-text">{rateText[Math.floor(StarRate) - 1]}</span> : ''}
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
                     <Favorite
