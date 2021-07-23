@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux' // 리덕스에서 회원정보를 가
 import Axios from 'axios'
 import SingleComment from './SingleComment'
 import ReplyComment from './ReplyComment'
+import {Button} from "antd";
 
 function Comment(props) {
     //방법 1.localStorage에서 가져오기 2.리덕스에 있는 state에서 가져오기
@@ -42,7 +43,7 @@ function Comment(props) {
     return (
         <div>
             <br />
-            <p> Replies </p>
+            <p> 댓글 </p>
             <hr />
 
 
@@ -50,7 +51,7 @@ function Comment(props) {
             {commentList &&
                     commentList.map((comment, index) => (
                         (!comment.responseTo && 
-                            <React.Fragment> 
+                            <React.Fragment key={index}> 
                                 <SingleComment
                                     movieId={movieId}
                                     comment={comment}
@@ -66,9 +67,9 @@ function Comment(props) {
                         )
                     ))
             }
-
+            <br />
             {/* Roote Comment form */}
-            <form style={{ display: 'flex' }} onSubmit={onSubmit}>
+            <form style={{ display: 'flex'}} onSubmit={onSubmit}>
                 <textarea
                     style={{ width: '100%', borderRadius: '5px'}}
                     onChange={handleClick}
@@ -76,7 +77,7 @@ function Comment(props) {
                     placeholder="코멘트를 작성해주세요"
                 />
                 <br />
-                <button style={{ width: '20%', height: '52px'}} onClick={onSubmit}>Submit</button>
+                <Button type="primary" style={{ width: '20%', height: '52px'}} onClick={onSubmit}>확인</Button>
             </form>
         </div>
     )

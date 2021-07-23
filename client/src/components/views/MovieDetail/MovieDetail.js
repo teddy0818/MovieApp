@@ -16,6 +16,7 @@ function MovieDetail(props) {
     // App.js 에서 설정해서 값을 가져올 수 있는거임
     let movieId = props.match.params.movieId;
     let genreString = "";
+    let tempRevenue = "";
 
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
@@ -23,6 +24,7 @@ function MovieDetail(props) {
     const [Comments, setComments] = useState([])
     const [MainIMG, setMainIMG] = useState(null)
     const [GenreString, setGenreString] = useState("")
+    const [Revenue, setRevenue] = useState("")
 
 
     useEffect(() => {
@@ -50,6 +52,7 @@ function MovieDetail(props) {
                         genreString += response.genres[i].name + ', '
                     }
                 }
+                setRevenue(response.revenue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
                 setGenreString(genreString)
             })
 
@@ -112,6 +115,7 @@ function MovieDetail(props) {
                 <MovieInfo 
                     genre={GenreString}
                     movie={Movie}
+                    revenue={Revenue}
                 />
 
                 <br />
