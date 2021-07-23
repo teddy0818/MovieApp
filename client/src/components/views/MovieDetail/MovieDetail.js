@@ -3,7 +3,7 @@ import { API_URL, API_KEY, IMAGE_BASE_URL} from "../../Config";
 import MainImage from '../LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import GridCards from '../commons/GridCards';
-import { Row, Button} from "antd";
+import { Row, Button, Rate} from "antd";
 import Favorite from './Sections/Favorite';
 import Comment from './Sections/Comment';
 import Axios from 'axios';
@@ -25,6 +25,7 @@ function MovieDetail(props) {
     const [MainIMG, setMainIMG] = useState(null)
     const [GenreString, setGenreString] = useState("")
     const [Revenue, setRevenue] = useState("")
+    const [StarRate, setStarRate] = useState(0)
 
 
     useEffect(() => {
@@ -82,7 +83,11 @@ function MovieDetail(props) {
     const refreshFunction = (newComment) => {
         setComments(Comments.concat(newComment))
     }
-        
+
+    const updStarRate = (value) => {
+        setStarRate(value)
+        console.log(value)
+      };
 
     return (
         <div style={{ width: '100%', margin: '0' }}>
@@ -97,9 +102,12 @@ function MovieDetail(props) {
 
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto'}}>
-
+                
+                <span>별점주기</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                    <Rate allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
+                </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-
                     <Favorite
                         movieInfo={Movie}
                         movieId={movieId}
@@ -107,7 +115,6 @@ function MovieDetail(props) {
                         userFrom={localStorage.getItem('userId')}
                         
                     />
-
                 </div>
                 
 
