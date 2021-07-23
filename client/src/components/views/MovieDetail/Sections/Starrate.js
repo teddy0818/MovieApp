@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react'
-import { Row, Button, Rate} from "antd";
+import {Rate} from "antd";
 import Axios from 'axios';
 
 function Starrate(props) {
-    const movieId = props.movieId
     const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!']
     
+    const userFrom = props.userFrom
+    const movieId = props.movieId
+    const movieTitle = props.movieInfo.title
+    const moviePost = props.movieInfo.backdrop_path
+    const movieRunTime = props.movieInfo.runtime
 
     const [StarRate, setStarRate] = useState(0)
 
@@ -58,9 +62,12 @@ function Starrate(props) {
         //별점이 없다면 - 별점 넣기
             Axios.post('/api/starrate/addToStarRate', {
                 rate:value,
+                userFrom,
                 movieId,
-                userFrom:localStorage.getItem('userId')}
-                )
+                movieTitle,
+                moviePost,
+                movieRunTime
+            })
             .then(response => {
                 // console.log(response.data)
                 if(response.data.success) {
