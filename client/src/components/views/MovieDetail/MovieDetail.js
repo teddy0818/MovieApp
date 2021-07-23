@@ -74,7 +74,15 @@ function MovieDetail(props) {
             }
         })
 
-
+        Axios.post('/api/starrate/getStarRate', {movieId, userFrom : localStorage.getItem('userId')})
+        .then(response => {
+            console.log(response.data)
+            if(response.data.success) {
+                setStarRate(response.data.rate)
+            } else {
+                alert('별점을 못가져왔습니다')
+            }
+        })
 
     }, [])
 
