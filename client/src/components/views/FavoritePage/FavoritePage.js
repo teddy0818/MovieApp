@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import Axios from 'axios'
 import './favorite.css'
-import { Popover } from 'antd'
+import { Popover, Button} from 'antd'
 import { API_URL, API_KEY, IMAGE_BASE_URL} from "../../Config";
 
 function FavoritePage() {
@@ -21,7 +21,7 @@ function FavoritePage() {
     }, [])  
 
     const onClickDelFavorite = (movieId) => {
-        console.log('무비아디 : ' + movieId);
+        // console.log('무비아디 : ' + movieId);
         Axios.post('/api/favorite/onClickDelFavorite', {
             movieId,
             userFrom:localStorage.getItem('userId')})
@@ -47,10 +47,10 @@ function FavoritePage() {
             <Popover content={content} title={`${favorite.movieTitle}`}>
                 <td>{favorite.movieTitle}</td>
             </Popover>
-            <td>{favorite.movieRunTime}</td>
+            <td>{favorite.movieRunTime} 분</td>
             {/* <td><button onClick={ onClickRemoveFavorite(favorite.movieId) }>Remove</button></td> */}
             {/* 이렇게 안하면 클릭을해도 이상하게 함수가 자동적으로 실행됨 */}
-            <td><button onClick={() => onClickDelFavorite(favorite.movieId)}>Remove</button></td>
+            <td><Button type="primary" onClick={() => onClickDelFavorite(favorite.movieId)}>제거</Button></td>
         </tr>
     })
 
@@ -69,7 +69,7 @@ function FavoritePage() {
 
     return (
         <div style= {{ width: '85%', margin: '3rem auto'}}>
-            <h2>FavoritePage</h2> 
+            <h2>즐겨찾기</h2> 
             <hr />
 
             <table>
