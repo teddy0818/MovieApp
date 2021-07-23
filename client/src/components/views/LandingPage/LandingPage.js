@@ -28,7 +28,7 @@ function LandingPage() {
         fetch(endpoint)
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 // ... : 배열안에 elements를 붙여서 합쳐준다
                 // ...Movies : 원래있던것들, ..response.results : 추가되는것들
                 setMovies([...Movies, ...response.results]) 

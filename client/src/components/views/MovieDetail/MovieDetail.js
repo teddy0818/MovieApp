@@ -76,7 +76,7 @@ function MovieDetail(props) {
 
         Axios.post('/api/starrate/getStarRate', {movieId, userFrom : localStorage.getItem('userId')})
         .then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             if(response.data.success) {
                 setStarRate(response.data.rate)
             } else {
@@ -96,11 +96,30 @@ function MovieDetail(props) {
 
     const updStarRate = (value) => {
         setStarRate(value)
-        console.log(value)
-        if(!value) {
-        // 준 별점이 있다면 - 별점 수정
+        if(StarRate) {
+            console.log('값있음~')
+
+            // 준 별점이 있다면 - 별점 수정
+            Axios.post('/api/starrate/ModifyToStarRate', {
+                rate:value,
+                movieId,
+                userFrom:localStorage.getItem('userId')}
+                )
+            .then(response => {
+                // console.log(response.data)
+                if(response.data.success) {
+                    setStarRate(value)
+                } else {
+                    alert('별점 수정실패')
+                }
+            })
+
         // 수정한 별점이 0이라면 - 별점 제거
+
+        
         } else {
+            console.log('값없음~')
+
         //별점이 없다면 - 별점 넣기
             Axios.post('/api/starrate/addToStarRate', {
                 rate:value,

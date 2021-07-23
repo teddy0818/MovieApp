@@ -14,15 +14,29 @@ router.post("/addToStarRate", (req, res) => {
     })
 });
 
+router.post("/ModifyToStarRate", (req, res) => {
+    StarRate.update({
+        'movieId' : req.body.movieId,
+        'userFrom': req.body.userFrom
+    },{
+        $set:{
+            'rate': req.body.rate
+        }
+    }).exec((err, doc) => {
+        if(err) return res.status(400).send(err)
+        return res.status(200).json({ success: true })
+    })
+});
+
 router.post("/getStarRate", (req, res) => {
     StarRate.find({ 'movieId' : req.body.movieId, 'userFrom': req.body.userFrom})
         .exec((err, info) => {
             if(err) return res.status(400).send(err)
 
-            let result = false
-            if(info.length !== 0) result = true
+            let rate = 0
+            if(info.length !== 0) rate = info[0].rate
 
-            res.status(200).json({ success: true, rate: info[0].rate })
+            res.status(200).json({ success: true, rate })
         })
 });
 
