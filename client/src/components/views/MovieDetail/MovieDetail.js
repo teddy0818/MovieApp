@@ -9,6 +9,7 @@ import Comment from './Sections/Comment';
 import Axios from 'axios';
 import LikeDisLikes from './Sections/LikeDisLikes'
 import { FaDAndD } from 'react-icons/fa';
+import Starrate from './Sections/Starrate'
 
 
 function MovieDetail(props) {
@@ -16,7 +17,7 @@ function MovieDetail(props) {
     // App.js 에서 설정해서 값을 가져올 수 있는거임
     let movieId = props.match.params.movieId;
     let genreString = "";
-    const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!'];
+    // const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!'];
 
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
@@ -25,7 +26,6 @@ function MovieDetail(props) {
     const [MainIMG, setMainIMG] = useState(null)
     const [GenreString, setGenreString] = useState("")
     const [Revenue, setRevenue] = useState("")
-    const [StarRate, setStarRate] = useState(0)
 
 
     useEffect(() => {
@@ -74,15 +74,6 @@ function MovieDetail(props) {
             }
         })
 
-        Axios.post('/api/starrate/getStarRate', {movieId, userFrom : localStorage.getItem('userId')})
-        .then(response => {
-            // console.log(response.data)
-            if(response.data.success) {
-                setStarRate(response.data.rate)
-            } else {
-                alert('별점을 못가져왔습니다')
-            }
-        })
 
     }, [])
 
@@ -94,60 +85,6 @@ function MovieDetail(props) {
         setComments(Comments.concat(newComment))
     }
 
-    const updStarRate = (value) => {
-        setStarRate(value)
-        if(StarRate) {
-            console.log('값있음~')
-
-            // 준 별점이 있다면 - 별점 수정
-            Axios.post('/api/starrate/ModifyToStarRate', {
-                rate:value,
-                movieId,
-                userFrom:localStorage.getItem('userId')}
-                )
-            .then(response => {
-                // console.log(response.data)
-                if(response.data.success) {
-                    setStarRate(value)
-                } else {
-                    alert('별점 수정실패')
-                }
-            })
-
-        // 수정한 별점이 0이라면 - 별점 제거
-        if(value === 0) {
-            Axios.post('/api/starrate/DelToStarRate', {
-                movieId,
-                userFrom:localStorage.getItem('userId')})
-            .then(response => {
-                // console.log(response.data)
-                if(response.data.success) {
-                    setStarRate(value)
-                } else {
-                    alert('별점 삭제실패')
-                }
-            })
-        }
-        
-        } else {
-            console.log('값없음~')
-
-        //별점이 없다면 - 별점 넣기
-            Axios.post('/api/starrate/addToStarRate', {
-                rate:value,
-                movieId,
-                userFrom:localStorage.getItem('userId')}
-                )
-            .then(response => {
-                // console.log(response.data)
-                if(response.data.success) {
-                    setStarRate(value)
-                } else {
-                    alert('별점 주기 실패')
-                }
-            })
-        }
-      };
 
     return (
         <div style={{ width: '100%', margin: '0' }}>
@@ -163,11 +100,10 @@ function MovieDetail(props) {
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto'}}>
                 
-                <span>별점주기</span>
-                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-                    <Rate allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
-                    {StarRate ? <span className="ant-rate-text">{rateText[Math.floor(StarRate) - 1]}</span> : ''}
-                </div>
+                <Starrate
+                    movieId={movieId}
+                />
+
                 <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
                     <Favorite
                         movieInfo={Movie}
