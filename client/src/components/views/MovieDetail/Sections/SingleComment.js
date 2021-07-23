@@ -59,7 +59,7 @@ function SingleComment(props) {
             <Comment 
                 actions={actions}
                 author={props.comment.writer.name}
-                avatar={<Avatar src/>}
+                // avatar={<Avatar src/>}
                 content={props.comment.content}
             />
         
@@ -74,7 +74,8 @@ function SingleComment(props) {
                     placeholder="코멘트를 작성해주세요"
                 />
                 <br />
-                <button style={{ width: '20%', height: '52px'}} onClic={onSubmit}>Submit</button>
+                <br />
+                <Button type="primary" style={{ width: '20%', height: '52px'}} onClick={onSubmit}>확인</Button>
             </form>
             }
         </div>

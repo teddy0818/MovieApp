@@ -20,7 +20,7 @@ function ReplyComment(props) {
     const renderReplyComment = (parentCommentId) => (
         //  소괄호 말고 중괄호 쓰면 안됨. 중괄호는 리턴값이 있어야함
         commentList.map((comment, index) => (
-            <React.Fragment> 
+            <React.Fragment key={index}> 
                 {comment.responseTo == parentCommentId &&
                     <div style={{ width: '80%', margin: '40px'}}>
                         <SingleComment
