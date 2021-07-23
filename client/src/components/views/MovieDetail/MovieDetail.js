@@ -115,7 +115,19 @@ function MovieDetail(props) {
             })
 
         // 수정한 별점이 0이라면 - 별점 제거
-
+        if(value === 0) {
+            Axios.post('/api/starrate/DelToStarRate', {
+                movieId,
+                userFrom:localStorage.getItem('userId')})
+            .then(response => {
+                // console.log(response.data)
+                if(response.data.success) {
+                    setStarRate(value)
+                } else {
+                    alert('별점 삭제실패')
+                }
+            })
+        }
         
         } else {
             console.log('값없음~')

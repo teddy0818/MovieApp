@@ -28,6 +28,14 @@ router.post("/ModifyToStarRate", (req, res) => {
     })
 });
 
+router.post("/DelToStarRate", (req, res) => {
+    StarRate.findOneAndDelete({ movieId: req.body.movieId, userFrom: req.body.userFrom})
+    .exec((err, doc) => {
+        if(err) return res.status(400).send(err)
+        return res.status(200).json({ success: true })
+    })
+});
+
 router.post("/getStarRate", (req, res) => {
     StarRate.find({ 'movieId' : req.body.movieId, 'userFrom': req.body.userFrom})
         .exec((err, info) => {
