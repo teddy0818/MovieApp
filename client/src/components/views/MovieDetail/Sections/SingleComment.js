@@ -51,7 +51,7 @@ function SingleComment(props) {
             userId={user}
             commentId={comment}
         />,
-        <span style={{marginLeft : "5px"}} onClick={toggleReply} key="comment-basic-reply-to">Reply to</span>
+        <span style={{marginLeft : "5px"}} onClick={toggleReply} key="comment-basic-reply-to">답글 달기</span>
     ]
 
     return (

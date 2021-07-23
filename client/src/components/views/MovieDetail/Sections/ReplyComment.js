@@ -48,7 +48,7 @@ function ReplyComment(props) {
         <div>
             {childCommentNumber > 0 &&
                 <p style={{ fontSize: '14px', margin: 0, color: 'gray' }} onClick={onHandleChange}>
-                    View {childCommentNumber} more comment(s)
+                    답글 더 보기 ({childCommentNumber})
                 </p>
             }
 
