@@ -75,9 +75,9 @@ function FavoritePage() {
             <table>
                 <thead>
                     <tr>
-                        <th>Movie Title</th>
-                        <th>Movie RunTime</th>
-                        <th>Remove from favorsites</th>
+                        <th>영화 제목</th>
+                        <th>상영 시간</th>
+                        <th>즐겨찾기 제거</th>
                     </tr>
                 </thead>
                 <tbody>
