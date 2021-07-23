@@ -3,7 +3,7 @@ import { API_URL, API_KEY, IMAGE_BASE_URL} from "../../Config";
 import MainImage from '../LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import GridCards from '../commons/GridCards';
-import { Row } from "antd";
+import { Row, Button} from "antd";
 import Favorite from './Sections/Favorite';
 import Comment from './Sections/Comment';
 import Axios from 'axios';
@@ -124,7 +124,7 @@ function MovieDetail(props) {
                 </div>
                 
                 <div style={{ display: 'flex', justifyContent: "center", margin: "2rem" }}>
-                    <button onClick={toggleActorView}> Toggle Actor View</button>
+                    <Button type="primary" onClick={toggleActorView}> {ActorToggle ? '출연진 상세표시 △' : '출연진 상세표시 ▽'} </Button>
                 </div>
 
                 {/* Actors Grid */}
