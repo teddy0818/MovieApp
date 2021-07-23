@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { Button } from 'antd'
+import star_img from "../../../../image/star.svg";
+import unStar_img from "../../../../image/unStar.svg";
+import { FaFileExcel } from 'react-icons/fa';
 
 function Favorite(props) {
 
@@ -74,7 +77,8 @@ function Favorite(props) {
 
     return (
         <div>
-            <Button onClick={onClickFavorite}>{Favorited ? 'Not Favorite' : 'Add to Favortie'} {FavoriteNumber}</Button>
+            {/* <Button onClick={onClickFavorite}>{Favorited ? '{<img src="#">}' : '즐겨찾기 추가'} {FavoriteNumber}</Button> */}
+            <Button style={{display: 'flex', justifyContent:'center', alignItems:'center'}} onClick={onClickFavorite}>{Favorited ?  <img src={star_img} style={{ width:"20px", height:"20px", marginRight:"5px"}} /> : <img src={unStar_img} style={{ width:"20px", height:"20px", marginRight:"5px"}} />} {FavoriteNumber}</Button>
         </div>
     )
 }
