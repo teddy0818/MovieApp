@@ -10,11 +10,12 @@ function MainImage(props) {
         41%,rgba(0,0,0,0.65)
         100%),
         url('${props.image}'), #1c1c1c`,
-            height: '650px',
+            height: '600px',
             backgroundSize: '100%, cover',
             backgroundPosition: 'center, center',
             width: '100%',
-            position: 'relative'
+            position: 'relative',
+            backgroundRepeat: 'no-repeat'
         }}>
         <div>
         <div style={{ position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem' }}>
