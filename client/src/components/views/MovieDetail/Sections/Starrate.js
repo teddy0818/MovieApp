@@ -82,7 +82,6 @@ function Starrate(props) {
 
     return (
         <div>
-            <span>별점주기</span>
             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                 <Rate allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
                 {StarRate ? <span className="ant-rate-text">{rateText[Math.ceil(StarRate) - 1]}</span> : ''}

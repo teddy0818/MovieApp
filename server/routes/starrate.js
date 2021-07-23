@@ -48,6 +48,17 @@ router.post("/getStarRate", (req, res) => {
         })
 });
 
+router.post("/getStarRatedMovies", (req, res) => {
+    StarRate.find({ 'userFrom' : req.body.userFrom})
+        .exec((err, starrates) => {
+            if(err) return res.status(400).send(err)
+            res.status(200).json({
+                success: true, 
+                starrates: starrates
+            })
+    })
+});
+
 
 
 module.exports = router;

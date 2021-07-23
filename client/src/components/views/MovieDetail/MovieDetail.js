@@ -98,7 +98,7 @@ function MovieDetail(props) {
 
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto'}}>
-                
+                <span>별점주기</span>
                 <Starrate
                     movieInfo={Movie}
                     movieId={movieId}

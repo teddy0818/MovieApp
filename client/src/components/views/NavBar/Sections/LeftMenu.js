@@ -12,6 +12,9 @@ function LeftMenu(props) {
     <Menu.Item>
       <a href="/favorite">즐겨찾기</a>
     </Menu.Item>
+    <Menu.Item>
+      <a href="/starrate">별점 준 영화</a>
+    </Menu.Item>
   </Menu>
   )
 }
