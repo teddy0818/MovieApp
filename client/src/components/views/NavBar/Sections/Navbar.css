@@ -11,6 +11,10 @@
 .menu__logo {
   width: 150px;
   float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .menu__logo a {
