@@ -23,8 +23,8 @@ function GridCards(props) {
                     {props.image ?
                     <img style={{ width: '100%', height: '320px' }} src={props.image} alt={props.characterName} />
                     :
-                    <img style={{ width: '100%', height: '320px' }} src={unKnown} alt={props.characterName} />
-                }
+                    <img style={{ width: '100%', height: '320px' }} src={unKnown} />
+                    }
                     <div style={{ color: 'black', fontSize: '15px', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontWeight:'bolder', fontSize:'20px'}}>{props.characterName}</div>
                         
                 </div>
