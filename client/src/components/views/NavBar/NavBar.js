@@ -40,24 +40,32 @@ function NavBar(props) {
           <LeftMenu mode="horizontal" />
         </div>
         <div className="menu_rigth">
-          <RightMenu mode="horizontal" />
+            <Input.Search
+              placeholder="영화 제목을 검색해보세요"
+              allowClear
+              maxLength={20}
+              enterButton="검색"
+              size="large"
+              onSearch={handleChange}
+            />
+            <RightMenu mode="horizontal" />
         </div>
-        <div className="menu_search">
-          <Input.Search
-            placeholder="영화 제목을 검색해보세요"
-            allowClear
-            maxLength={20}
-            enterButton="검색"
-            size="large"
-            onSearch={handleChange}
-          />
+        <div className="menu_hidden_search">
+        <Input.Search
+              placeholder="영화 제목을 검색해보세요"
+              allowClear
+              maxLength={20}
+              enterButton="검색"
+              size="large"
+              onSearch={handleChange}
+            />
         </div>
         <Button
-          className="menu__mobile-button"
-          type="primary"
-          onClick={showDrawer}
-        >
-          <Icon type="align-right" />
+            className="menu__mobile-button"
+            type="primary"
+            onClick={showDrawer}
+          >
+            <Icon type="align-right" />
         </Button>
         <Drawer
           title="메뉴"
