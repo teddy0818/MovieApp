@@ -45,7 +45,7 @@ function FavoritePage() {
         )
         return <tr key={index}>
             <Popover content={content} title={`${favorite.movieTitle}`}>
-                <td>{favorite.movieTitle}</td>
+                <td><a href={`/movie/${favorite.movieId}`} style={{}}>{favorite.movieTitle}</a></td>
             </Popover>
             <td>{favorite.movieRunTime} 분</td>
             {/* <td><button onClick={ onClickRemoveFavorite(favorite.movieId) }>Remove</button></td> */}

@@ -26,9 +26,9 @@ function GridCards(props) {
             <Col lg={6} md={8} xs={24}>
                 <div style={{ position: 'relative', textAlign: 'center'}}>
                     {props.image ?
-                    <img style={{ width: '100%', height: '320px' }} src={props.image} alt={props.characterName} />
+                    <img style={{ width: '90%', height: '320px' }} src={props.image} alt={props.characterName} />
                     :
-                    <img style={{ width: '100%', height: '320px' }} src={unKnown} />
+                    <img style={{ width: '90%', height: '320px' }} src={unKnown} />
                     }
                     <div style={{ color: 'black', fontSize: '15px', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontWeight:'bolder', fontSize:'20px'}}>{props.characterName}</div>
                         

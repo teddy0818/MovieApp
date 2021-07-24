@@ -31,7 +31,7 @@ function StarRatePage() {
         )
         return <tr key={index}>
             <Popover content={content} title={`${starrate.movieTitle}`}>
-                <td>{starrate.movieTitle}</td>
+                <td><a href={`/movie/${starrate.movieId}`}>{starrate.movieTitle}</a></td>
             </Popover>
             <td>{starrate.movieRunTime} 분</td>
             <td>
