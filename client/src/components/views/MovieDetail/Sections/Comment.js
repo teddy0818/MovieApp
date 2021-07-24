@@ -12,6 +12,8 @@ function Comment(props) {
     const movieId = props.movieId
     const commentList = props.commentList
 
+    const userFrom = props.userFrom
+
     const [commentValue, setCommentValue] = useState("")
 
     const handleClick = (event) => {
@@ -20,6 +22,11 @@ function Comment(props) {
 
     const onSubmit = (event) => {
         event.preventDefault()
+
+        if(!userFrom) {
+            alert('로그인이 필요한 서비스입니다')
+            return
+        } 
         
         let variables = {
             content: commentValue,

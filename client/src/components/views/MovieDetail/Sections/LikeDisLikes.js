@@ -92,6 +92,11 @@ function LikeDisLikes(props) {
     }, [])
 
     const onClickLike = () => {
+        if(!userId) {
+            alert('로그인이 필요한 서비스입니다')
+            return
+        } 
+
         if(IsLike) {
             //좋아요 활성화 일때
             Axios.post('/api/like/removeLike', variables)
@@ -133,6 +138,11 @@ function LikeDisLikes(props) {
     }
 
     const onClickdisLike = () => {
+        if(!userId) {
+            alert('로그인이 필요한 서비스입니다')
+            return
+        } 
+        
         if(IsDislike) {
             //싫어요 활성화 일때
             Axios.post('/api/dislike/removeDislike', variables)

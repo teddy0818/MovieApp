@@ -49,6 +49,11 @@ function Favorite(props) {
     }, [])
 
     const onClickFavorite = () => {
+        if(!props.userFrom) {
+            alert('로그인이 필요한 서비스입니다')
+            return
+        } 
+
         if(Favorited) {
             Axios.post('/api/favorite/removeFromFavorite', variables)
             .then(response => {

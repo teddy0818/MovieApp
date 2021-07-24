@@ -29,7 +29,7 @@ function SearchPage(props) {
 
     return (
         <div style={{ width: '100%', margin: '50px 20px' }}>
-            <h1><span>{props.match.params.query}</span> 검색 결과</h1>
+            <h1><span style={{color: '#1890ff'}}>{props.match.params.query}</span> 검색 결과</h1>
 
             <div style={{ width:"85%", margin: '1rem auto' }}>
             <Row gutter={[16, 16]} >

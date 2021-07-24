@@ -13,10 +13,9 @@ import Starrate from './Sections/Starrate'
 
 function MovieDetail(props) {
 
-    // App.js 에서 설정해서 값을 가져올 수 있는거임
+    // App.js 에서 주소에 route 설정해서 값을 가져올 수 있는거임
     let movieId = props.match.params.movieId;
     let genreString = "";
-    // const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!'];
 
     const [Movie, setMovie] = useState([])
     const [Casts, setCasts] = useState([])
@@ -157,6 +156,7 @@ function MovieDetail(props) {
                 movieId={movieId}
                 commentList={Comments}
                 refreshFunction={refreshFunction}
+                userFrom={localStorage.getItem('userId')}
             />
             </div>
 

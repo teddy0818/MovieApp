@@ -23,6 +23,10 @@ function SingleComment(props) {
 
     const onSubmit = (event) => {
         event.preventDefault()
+        if(!localStorage.getItem('userId')) {
+            alert('로그인이 필요한 서비스입니다')
+            return
+        } 
         let variables = {
             content: CommentValue,
             writer: user.userData._id,

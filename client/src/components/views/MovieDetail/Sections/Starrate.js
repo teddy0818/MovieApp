@@ -3,6 +3,7 @@ import {Rate} from "antd";
 import Axios from 'axios';
 
 function Starrate(props) {
+
     const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!']
     
     const userFrom = props.userFrom
@@ -26,6 +27,12 @@ function Starrate(props) {
     }, [])
 
     const updStarRate = (value) => {
+        if(!props.userFrom) {
+            alert('로그인이 필요한 서비스입니다')
+            return
+        } 
+
+
         setStarRate(value)
         if(StarRate) {
             // 준 별점이 있다면 - 별점 수정
