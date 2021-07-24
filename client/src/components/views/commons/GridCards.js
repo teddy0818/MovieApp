@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col } from 'antd' // 한줄에 4개 뜨게 하려고
 import unKnown from '../../../image/unKnown.svg'
+import noPhoto from '../../../image/no-photo.svg'
 
 function GridCards(props) {
 
@@ -10,7 +11,11 @@ function GridCards(props) {
             <Col lg={6} md={8} xs={24}>
                 <div style={{ position: 'relative', textAlign: 'center'}}>
                     <a href={`/movie/${props.movieId}`} >
+                    {props.image ?
                         <img style={{ width: '85%', height: '320px' }} src={props.image} alt={props.movieName} />
+                        :
+                        <img style={{ width: '85%', height: '320px' }} src={noPhoto} alt={props.movieName} />
+                    }
                         <div style={{ color: 'black', fontSize: '15px', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontWeight:'bolder', fontSize:'20px'}}>{props.movieName}</div>
                     </a>
                 </div>
