@@ -29,22 +29,22 @@ function SearchPage(props) {
 
     return (
         <div style={{ width: '100%', margin: '50px 20px' }}>
-            <h1><span style={{color: '#1890ff'}}>{props.match.params.query}</span> 검색 결과</h1>
-
             <div style={{ width:"85%", margin: '1rem auto' }}>
-            <Row gutter={[16, 16]} >
-                {SearchedMovies && SearchedMovies.map((movie, index) => (
-                    <React.Fragment key={index}>
-                        <GridCards
-                            landingPage
-                            image={movie.poster_path ?
-                                `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
-                            movieId={movie.id}
-                            movieName={movie.title}
-                        />
-                    </React.Fragment>
-                ))}
-            </Row>
+                <h1><span style={{color: '#1890ff'}}>{props.match.params.query}</span> 검색 결과</h1>
+                <hr />
+                <Row gutter={[16, 16]} >
+                    {SearchedMovies && SearchedMovies.map((movie, index) => (
+                        <React.Fragment key={index}>
+                            <GridCards
+                                landingPage
+                                image={movie.poster_path ?
+                                    `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
+                                movieId={movie.id}
+                                movieName={movie.title}
+                            />
+                        </React.Fragment>
+                    ))}
+                </Row>
             </div>                   
             <div style={{ display: 'flex', justifyContent: 'center'}}>
                 <Button type="primary" onClick={loadMoreItems} style={{width: '100px', height: '50px', marginTop: '40px'}}>더보기</Button>
