@@ -11,6 +11,10 @@ function NavBar(props) {
   const [visible, setVisible] = useState(false)
 
   const handleChange = (value, event) => {
+    if(value.length == 0) {
+      alert('검색어를 입력해주세요')
+      return
+    }
     window.location.replace(`/searchpage/${value}`)
     // props.history.push(`/searchpage/${value}`);
   }
