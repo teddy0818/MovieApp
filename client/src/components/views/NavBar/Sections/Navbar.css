@@ -3,7 +3,7 @@
 .menu {
   padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
-  overflow: auto;
+  overflow: hidden;
   box-shadow: 0 0 30px #f3f1f1;
   background-color: white;
 }
@@ -11,10 +11,6 @@
 .menu__logo {
   width: 150px;
   float: left;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }
 
 .menu__logo a {
@@ -48,6 +44,12 @@
   float: right;
 }
 
+.menu__container .menu_search {
+  float: right;
+  margin-top: 14px;
+  margin-right: 15px;
+}
+
 .menu__mobile-button {
   float: right;
   height: 32px;
@@ -72,7 +74,8 @@
   }
 
   .menu_left,
-  .menu_rigth {
+  .menu_rigth,
+  .menu_search {
     display: none;
   }
 
@@ -87,5 +90,11 @@
 
   .menu__logo a {
     padding: 10px 20px;
+  }
+}
+
+@media (max-width: 840px) {
+  .menu_search {
+    display: none;
   }
 }
