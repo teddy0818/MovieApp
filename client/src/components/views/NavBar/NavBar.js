@@ -11,7 +11,8 @@ function NavBar(props) {
   const [visible, setVisible] = useState(false)
 
   const handleChange = (value, event) => {
-    props.history.push(`/searchpage/${value}`);
+    window.location.replace(`/searchpage/${value}`)
+    // props.history.push(`/searchpage/${value}`);
   }
 
   const showDrawer = () => {
