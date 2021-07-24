@@ -90,8 +90,8 @@ function Starrate(props) {
     return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-                <Rate allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
-                {StarRate ? <span className="ant-rate-text">{rateText[Math.ceil(StarRate) - 1]}</span> : ''}
+                <Rate style={{ fontSize:'40px'}} allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
+                {StarRate ? <span style={{paddingTop:'8px'}} className="ant-rate-text">{rateText[Math.ceil(StarRate) - 1]}</span> : ''}
             </div>
         </div>
     )
