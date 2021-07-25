@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 function Starrate(props) {
 
-    const rateText = ['싫다!', '별로다ㅜㅜ', '부족해..', '볼만해~', '훌륭해!']
+    const rateText = ['최악이에요', '싫어요', '재미없어요', '별로예요', '부족해요', '보통이에요', '볼만해요', '재미있어요', '훌륭해요!', '최고예요!']
     
     const userFrom = props.userFrom
     const movieId = props.movieId
@@ -86,15 +86,24 @@ function Starrate(props) {
         }
       }
 
-
-    return (
-        <div>
-            <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-                <Rate style={{ fontSize:'40px'}} allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
-                {StarRate ? <span style={{paddingTop:'8px'}} className="ant-rate-text">{rateText[Math.ceil(StarRate) - 1]}</span> : ''}
+      if(props.isPage) {
+          return (
+              <div>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                      <Rate style={{ fontSize:'25px'}} allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
+                  </div>
+              </div>
+          )
+    }else {
+        return (
+            <div>
+                <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                    <Rate style={{ fontSize:'40px'}} allowHalf allowClear defaultValue={StarRate} value={StarRate} onChange={updStarRate}/>
+                    {StarRate ? <span style={{paddingTop:'8px'}} className="ant-rate-text">{rateText[StarRate*2-1]}</span> : ''}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Starrate

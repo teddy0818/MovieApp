@@ -8,8 +8,11 @@ import Starrate from '../MovieDetail/Sections/Starrate'
 function StarRatePage() {
 
     const [StarRates, setStarRates] = useState([])
+    // 별점 페이지 구분용
+    const [isPage, setisPage] = useState(true)
 
     useEffect(() => {
+        
         Axios.post('/api/starrate/getStarRatedMovies', {userFrom : localStorage.getItem('userId')})
         .then(response => {
             // console.log(response.data)
@@ -39,6 +42,7 @@ function StarRatePage() {
                     movieInfo={starrate}
                     movieId={starrate.movieId}
                     userFrom={localStorage.getItem('userId')}
+                    isPage={isPage}
                 />
             </td>
         </tr>
