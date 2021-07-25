@@ -1,7 +1,7 @@
 # 소개글
 
 > 영화로 재밌게 놀아보자 BadMovie 😎<br><br>
-링크 : https://cryptic-falls-97963.herokuapp.com/
+링크 : https://cryptic-falls-97963.herokuapp.com/  ⛔️ 첫 접속 시 다소 시간이 걸릴 수 있습니다)
 
 평소 영화를 좋아해서 영화와 관련 된 사이트를 만들어 볼까? 생각만 하다가
 
