@@ -103,8 +103,11 @@ function LikeDisLikes(props) {
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
-                    getLikeNum()
-                    getIsLike()
+                    // getLikeNum()
+                    // getIsLike()
+                    setLikeNum(LikeNum-1)
+                    setIsLike(!IsLike)
+
                 } else {
                     alert('좋아요 비활성화 실패')
                 }
@@ -115,8 +118,10 @@ function LikeDisLikes(props) {
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
-                    getLikeNum()
-                    getIsLike()
+                    // getLikeNum()
+                    // getIsLike()
+                    setLikeNum(LikeNum+1)
+                    setIsLike(!IsLike)
                 } else {
                     alert('좋아요 활성화 실패')
                 }
@@ -127,8 +132,12 @@ function LikeDisLikes(props) {
                 .then(response => {
                     // console.log('saveLike : ' + response.data)
                     if(response.data.success) {
-                        getdisLikeNum()
-                        getIsDislike()
+                        // getdisLikeNum()
+                        // getIsDislike()
+                        setLikeNum(LikeNum+1)
+                        setIsLike(!IsLike)
+                        setDislikeNum(DislikeNum-1)
+                        setIsDislike(!IsDislike)
                     } else {
                         alert('싫어요 비활성화 실패')
                     }
@@ -149,8 +158,10 @@ function LikeDisLikes(props) {
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
-                    getdisLikeNum()
-                    getIsDislike()
+                    // getdisLikeNum()
+                    // getIsDislike()
+                    setDislikeNum(DislikeNum-1)
+                    setIsDislike(!IsDislike)
                 } else {
                     alert('싫어요 비활성화 실패')
                 }
@@ -161,8 +172,10 @@ function LikeDisLikes(props) {
             .then(response => {
                 // console.log('saveLike : ' + response.data)
                 if(response.data.success) {
-                    getdisLikeNum()
-                    getIsDislike()
+                    // getdisLikeNum()
+                    // getIsDislike()
+                    setDislikeNum(DislikeNum+1)
+                    setIsDislike(!IsDislike)
                 } else {
                     alert('싫어요 활성화 실패')
                 }
@@ -173,8 +186,12 @@ function LikeDisLikes(props) {
                 .then(response => {
                     // console.log('saveLike : ' + response.data)
                     if(response.data.success) {
-                        getLikeNum()
-                        getIsLike()
+                        // getLikeNum()
+                        // getIsLike()
+                        setLikeNum(LikeNum-1)
+                        setIsLike(!IsLike)
+                        setDislikeNum(DislikeNum+1)
+                        setIsDislike(!IsDislike)
                     } else {
                         alert('좋아요 비활성화 실패')
                     }
