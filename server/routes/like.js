@@ -14,7 +14,6 @@ router.post("/getLikeNum", (req, res) => {
     if(req.body.movieId) {
         variable = {
             movieId : req.body.movieId,
-            userId : req.body.userId
         }
     } else {
         variable = {

@@ -19,7 +19,7 @@ router.post("/getDisLikeNum", (req, res) => {
 });
 
 router.post("/getMeDislike", (req, res) => {
-    Dislike.find({ 'movieId' : req.body.movieId, 'userId': req.body.userId})
+    Dislike.find({ 'movieId' : req.body.movieId, 'userId': req.body.userId, 'commentId' : req.body.commentId})
         .populate('userId') 
         .exec((err, Dislikes) => {
             if(err) return res.status(400).send(err)
