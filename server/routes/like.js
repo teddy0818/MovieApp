@@ -13,12 +13,11 @@ router.post("/getLikeNum", (req, res) => {
 
     if(req.body.movieId) {
         variable = {
-            movieId : req.body.movieId,
+            movieId : req.body.movieId
         }
     } else {
         variable = {
-            commentId : req.body.commentId,
-            userId : req.body.userId
+            commentId : req.body.commentId
         }
     }
 
