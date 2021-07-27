@@ -8,7 +8,7 @@ const { Dislike } = require("../models/Dislike");
 //=================================
 
 router.post("/getDisLikeNum", (req, res) => {
-    Dislike.find({ 'movieId' : req.body.movieId})
+    Dislike.find({ 'movieId' : req.body.movieId, 'commentId' : req.body.commentId})
         .exec((err, Dislikes) => {
             if(err) return res.status(400).send(err)
             res.status(200).json({ 

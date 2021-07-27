@@ -36,7 +36,7 @@ function LikeDisLikes(props) {
         //좋아요 수 가져오기
         Axios.post('/api/like/getLikeNum', variables)
         .then(response => {
-            // console.log('likenum : ' + response.data.likesNum)
+            console.log('likenum : ' + response.data.likesNum)
             if(response.data.success) {
                 setLikeNum(response.data.likesNum)
             } else {
@@ -49,7 +49,7 @@ function LikeDisLikes(props) {
         //싫어요 수 가져오기
         Axios.post('/api/dislike/getDisLikeNum', variables)
         .then(response => {
-            // console.log('disLikenum : ' + response.data.dislikesNum)
+            console.log('disLikenum : ' + response.data.dislikesNum)
             if(response.data.success) {
                 setDislikeNum(response.data.dislikesNum)
             } else {
