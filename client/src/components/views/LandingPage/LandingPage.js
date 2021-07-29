@@ -67,7 +67,7 @@ function LandingPage() {
             }
     
         const fetchUpcomingMovie = ()  => {
-            fetch(`${API_URL}movie/upcoming/?api_key=${API_KEY}&language=ko-KR&page=1`)
+            fetch(`https://api.themoviedb.org/3/movie/upcoming/?api_key=${API_KEY}&language=ko-KR&page=1`)
                 .then(response => response.json())
                 .then(response => {
                     setUpcomingMovie(response.results.slice(0, 12)) 
@@ -152,6 +152,7 @@ function LandingPage() {
                 <Slider {...settings}>
                     {Recommendations && Recommendations.map((movie, index) => (
                         <React.Fragment key={index}>
+                            <div className="movieNum"></div>
                             <GridCards
                                 landingPage
                                 image={movie.poster_path ?
