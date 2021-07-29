@@ -36,7 +36,7 @@ function SingleComment(props) {
 
         Axios.post('/api/comment/saveComment', variables)
         .then(response => {
-            console.log(response.data)
+            // console.log(response.data)
             if(response.data.success) {
                 props.refreshFunction(response.data.result)
                 setCommentValue('')

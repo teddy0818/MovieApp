@@ -61,13 +61,12 @@ function LandingPage() {
             fetch(`${API_URL}movie/popular?api_key=${API_KEY}&language=ko-KR&page=1`)
                 .then(response => response.json())
                 .then(response => {
-                    console.log(response.results)
                     setPopularMovie(response.results.slice(0, 12)) 
                 })
             }
     
         const fetchUpcomingMovie = ()  => {
-            fetch(`https://api.themoviedb.org/3/movie/upcoming/?api_key=${API_KEY}&language=ko-KR&page=1`)
+            fetch(`${API_URL}movie/upcoming?api_key=${API_KEY}&language=ko-KR&page=1`)
                 .then(response => response.json())
                 .then(response => {
                     setUpcomingMovie(response.results.slice(0, 12)) 
