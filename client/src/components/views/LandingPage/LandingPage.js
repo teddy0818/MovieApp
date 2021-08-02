@@ -151,7 +151,7 @@ function LandingPage() {
                 <Slider {...settings}>
                     {Recommendations && Recommendations.map((movie, index) => (
                         <React.Fragment key={index}>
-                            <div></div>
+                            <div className="movieNum"></div>
                             <GridCards
                                 landingPage
                                 image={movie.poster_path ?

@@ -11,7 +11,6 @@ function Comment(props) {
     // props 이용해서 가져오기. 
     const movieId = props.movieId
     const commentList = props.commentList
-
     const userFrom = props.userFrom
 
     const [commentValue, setCommentValue] = useState("")
