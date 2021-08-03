@@ -10,9 +10,9 @@ import Recommendations from "./Sections/Recommendations"
 function LandingPage() {
     return (
       <div style={{ width: '100%', margin: '0' }}>
-          <PopularMovie /><br /><br /><br />
-          <UpcomingMovie /><br /><br /><br />
-          <TopRatedMovie /><br /><br /><br />
+          <PopularMovie /><br /><br />
+          <UpcomingMovie /><br /><br />
+          <TopRatedMovie /><br /><br />
           <Recommendations />
       </div>
     )
